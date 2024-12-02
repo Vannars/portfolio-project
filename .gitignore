@@ -1,0 +1,13 @@
+# enviroment var
+.env
+# Node Modules
+node_modules/
+
+# Generated Configs
+*.env.*
+*.local
+
+# Logs
+*.log
+npm-debug.log*
+
