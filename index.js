@@ -1,60 +1,75 @@
-//Import express, mysql, express-session, ejs, express-sanitizer, express-validator
-var express = require('express');
-var ejs = require('ejs');
-const expressSanitizer = require('express-sanitizer');
-var validator = require('express-validator');
-
+//==================================================IMPORTS==================================================
+//Import dotenv
 require('dotenv').config();
-const clientId = process.env.TWITCH_CLIENT_ID;
-const clientSecret = process.env.TWITCH_CLIENT_SECRET;
 
+// Import express, ejs, express-validator, express-sanitizer, mysql, express-session 
+var express = require ('express');
+var ejs = require('ejs');
+var validator = require ('express-validator');
+const expressSanitizer = require('express-sanitizer');
 
-//Import mysql (mysql2)
-//this will  be used to connect to the database
-var mysql = require('mysq2l');
+//Import mysql module
+var mysql = require('mysql2');
 
-//Import express-session
-//this will store the session data
+//Import express-session module
 var session = require('express-session');
-const [rediectLogin] = require('./rediectLogin');
+
+//Import twitch api
+const clientId = process.env.TWITCH_CLIENT_ID; // taken from .env file
+const clientSecret = process.env.TWITCH_CLIENT_SECRET; // also taken from .env file
 
 
-//Express app object
+//==================================================EXPRESS AND EJS SETUP==================================================
+//Express app initialization
 const app = express();
 const port = 8000;
 
-//Ejs template engine
+//Ejs setup
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static(__dirname + '/public'));
 app.use(expressSanitizer());
 
+//==================================================DATABASE CONNECTION==================================================
+//Create connection pool to the database
 const db = mysql.createConnection({
-    host:'localhost',
-    user: 'portfolio_user',
-    password: 'password',
-    database: 'portfolio_db'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
-db.connect( (err) => {
+db.connect((err) => {
     if(err){
         throw err;
     }
     console.log('Connected to database');
     })
+
 global.db = db;
 
+//==================================================SESSION SETUP==================================================
 // Create session 
 // the secret paramater is used to create a session is (sign the cookie id with this secret)
 app.use(session({
-    secret: 'secretsession',
+    secret: 'secret',
     resave: false,
     saveUninitialized: false,
     cookie: {
         expires: 600000
     }
 }))
+
+//==================================================ROUTE HANDLING==================================================
+// Load the route handlers
+const mainRoutes = require("./routes/main")
+app.use('/', mainRoutes)
+
+// Load the route handlers for /users
+const usersRoutes = require('./routes/users')
+app.use('/users', usersRoutes)
+
+app.locals.siteData = { siteName: 'GoldGameReviews' };
 
 // Start the web app listening
 app.listen(port, () => console.log(`Node app listening on port ${port}!`))

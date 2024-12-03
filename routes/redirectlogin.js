@@ -6,6 +6,4 @@ const redirectLogin = (req, res, next) => { /// just a cheeky shorthand function
     }
 };
 
-module.exports = { // remember to export and import before using the function
-    redirectLogin
-};
+module.exports = {redirectLogin}; // make accessible to other files
