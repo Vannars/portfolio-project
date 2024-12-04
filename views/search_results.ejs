@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Results</title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1>Search Results</h1>
+    <ul>
+        <% data.forEach(function(game) { %>
+            <li>             
+              <strong>Name:</strong> <%= game.name %><br>
+              <strong>Game ID:</strong> <%= game.id %><br>
+              <strong>Release Date:</strong> <%= new Date(game.first_release_date * 1000).toDateString() %>
+            </li>
+            <br>
+          <% }) %>
+    </ul>
+    <p><a href="users/logout">Logout</a></p>
+  </body>

@@ -69,7 +69,11 @@ app.use('/', mainRoutes)
 const usersRoutes = require('./routes/users')
 app.use('/users', usersRoutes)
 
+// Load the route handlers for /reviews
 app.locals.siteData = { siteName: 'GoldGameReviews' };
+const reviewsRoutes = require('./routes/reviews')
+app.use('/reviews', reviewsRoutes)
+
 
 // Start the web app listening
 app.listen(port, () => console.log(`Node app listening on port ${port}!`))

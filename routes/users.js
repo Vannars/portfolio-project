@@ -21,12 +21,13 @@ router.post('/loggedin',
     check ('username').isAlphanumeric(), // check the username is alphanumeric
     check ('password').isLength({min: 8}), // min password length is 8
     function (req, res, next) {
-        const errors = validaitonResult(req);
+        const errors = validationResult(req);
     if (!errors.isEmpty()) {
         res.redirect('./login');
     } else{
     // Query the database to get the hashed password from the users table
     let sqlquery = "SELECT hashedPassword FROM users WHERE username = ?"
+    const sanitizedUsername = req.sanitize(req.body.username);
     // Execute the SQL query taking the username from the request body
     db.query(sqlquery, [sanitizedUsername], function(err, result) {
         // Simple error handling
@@ -57,12 +58,12 @@ router.get('/logout', redirectLogin, (req,res) => {
     if (err) {
       return res.redirect('./')
     }
-    res.send('you are now logged out. <a href='+'/'+'>Home</a>');
+    res.send('you are now logged out. <a href=../>Home</a>');
     })
-})
+});
 
 // router to handle users
-router.get('/list', redirectLogin, function(req, res, next){
+router.get('/list', function(req, res, next){
     let sqlquery = "SELECT * FROM users" // query database to get all the users
     // execute sql query
     db.query(sqlquery, (err, result) => {

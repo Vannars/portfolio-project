@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome to <%=siteData.siteName%></title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1><%=siteData.siteName%> site</h1>
+    <h2>All reviews</h2>
+    <ul>
+      <% reviews_list.forEach(function(review) { %>
+        <li><%= review.game_id %>, <%=review.score%>, <%= review.user_id %> </li>
+      <% }) %>
+    </ul>
+    <p><a href="users/logout">Logout</a></p>
+    </body>
+</html>

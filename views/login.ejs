@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login for <%=siteData.siteName%></title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1>Login for <%=siteData.siteName%></h1>
+    <form method="POST" action="/users/loggedin"> 
+        <p>username: <input id="username" type="text" name="username"/></p>
+        <p>password: <input id="password" type="password" name="password"/></p>   
+        <input type="submit" value="Login" />
+      </form>
+      <p> <a href="register">Register</a></p>
+      <p><a href="logout">Logout</a></p>
+  </body>
+</html>

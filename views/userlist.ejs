@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome to <%=siteData.siteName%></title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1><%=siteData.siteName%> site</h1>
+    <h2>Here are the list of users</h2>
+    <ul>
+      <% availableUsers.forEach(function(user) { %>
+        <li><%= user.username %></li>
+      <% }) %>
+    </ul>
+    <p><a href="users/logout">Logout</a></p>
+    </body>
+</html>
