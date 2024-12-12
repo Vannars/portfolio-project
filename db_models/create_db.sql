@@ -31,5 +31,6 @@ CREATE TABLE IF NOT EXISTS reviews (
     FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
 );
 
+
 CREATE USER IF NOT EXISTS 'goldgamer'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON gamereviews_db.* TO 'goldgamer'@'localhost';
