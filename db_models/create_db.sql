@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS games(
+CREATE TABLE IF NOT EXISTS games (
     game_id INT PRIMARY KEY,
     name VARCHAR(255) UNIQUE NOT NULL,
     release_date DATE, 
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS reviews(
     username  VARCHAR(50) NOT NULL, 
     game_name VARCHAR(255) NOT NULL, -- Include the human-readable game name
     score INT CHECK (score >= 0 AND score <= 10) NOT NULL, 
-    headline VARCHAR(50) NOT NULL,
+    headline VARCHAR(50),
     review_text TEXT NOT NULL, 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (game_id) REFERENCES games(game_id) ON DELETE CASCADE, 
