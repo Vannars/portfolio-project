@@ -20,18 +20,17 @@ STEP 2:
 You also need to set up the database in MySQL workbench:
 Find the db_models directory and execute the following in the workbench
 
-create_db.sql
-insert_into_db.sql
+source create_db.sql
+source insert_into_db.sql
+
 
 If you don't have msql workbench use:
-msql -u root -p 
+cd db_models
+sudo mysql
+source create_db.sql
+source insert_into_db.sql
 
-^(replace root with your user)^
-
-Then ---->>>
-
-source /portfolio-project\db_models\create_db.sql
-source /portfolio-project\db_models\insert_into_db.sql  (these are required just in case the idgb database isnt working - you can still query the database for information)
+(these are required just in case the idgb database isnt working - you can still query the database for information)
 
 (or the path to the project specific to your machine)
 
