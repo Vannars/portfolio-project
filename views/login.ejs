@@ -1,17 +1,36 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Login for <%=siteData.siteName%></title>
-    <link rel="stylesheet"  type="text/css" href="/main.css" />
-  </head>
-  <body>
-    <h1>Login for <%=siteData.siteName%></h1>
-    <form method="POST" action="/users/loggedin"> 
-        <p>username: <input id="username" type="text" name="username"/></p>
-        <p>password: <input id="password" type="password" name="password"/></p>   
-        <input type="submit" value="Login" />
-      </form>
-      <p> <a href="register">Register</a></p>
-      <p><a href="logout">Logout</a></p>
-  </body>
+
+<head>
+  <title>Login for <%= siteData.siteName %></title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="/"><%= siteData.siteName %></a>
+    </div>
+    <nav>
+      <p><a href="/">Home</a></p>
+      <p><a href="/users/register">Register</a></p>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Login for <%= siteData.siteName %></h1>
+    <form method="POST" action="/users/loggedin" class="login-form">
+      <p>Username: <input id="username" type="text" name="username" required /></p>
+      <p>Password: <input id="password" type="password" name="password" required /></p>
+      <input type="submit" value="Login" />
+    </form>
+  </main>
+
+  <footer>
+    <p>GoldGameReviews</p>
+    <p>Created by: Noah Tambala (ntamb002)</p>
+    <p>Contact: ntamb002@gold.ac.uk</p>
+  </footer>
+</body>
+
 </html>

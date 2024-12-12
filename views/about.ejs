@@ -1,17 +1,52 @@
 <!doctype html>
 <html>
-  <head>
-    <title>About <%=siteData.siteName%></title>
-    <link rel="stylesheet"  type="text/css" href="/main.css" />
-  </head>
-  <body>
-    <h1>About <%=siteData.siteName%></h1>
-    <p>Welcome to GoldGameReviews, where games review games!</p>
-    <p>Go to the home page to view the sitemap</p>
-    <p>There you will find the login page this will let you register for an account,
-    after you have registered you can post your own game reviews!</p>
-    <p>You can also view your own reviews and edit them as you please!</p> 
-    </p>
-    <p><a href="users/logout">Logout</a></p>
-  </body>
+
+<head>
+  <title>About <%= siteData.siteName %> </title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="/"><%= siteData.siteName %> </a>
+    </div>
+    <nav>
+      <p><a href="/">Home</a></p>
+      <p><a href="/users/list">List users</a></p>
+      <% if (user) { %>
+        <p>Logged in as: <%= user.username %> | <a href="/users/logout">Logout</a></p>
+      <% } else { %>
+        <p><a href="/users/login">Login</a> | <a href="/users/register">Register</a></p>
+      <% } %>
+    </nav>
+  </header>
+
+  <main>
+    <h1>About <%= siteData.siteName %> </h1>
+    <section class="about-content">
+      <p>Welcome to GoldGameReviews, where you can review video games!</p>
+      <br>
+      <p>Home - shows the sitemap</p>
+      <p>List users - shows the current users</p>
+      <p>You can -login- and -register- for an account. There is a visible check in the top right to show you are logged in.</p>
+      <p> After you -register- you will be taken to a page which will show your -login- credentials - including the hashed and unhashed password for submission's sake</p>
+      <br>
+      <p>About - is this page (obviously).</p>
+      <p>Search - allows you to search for a game to review</p>
+      <p>Search reviews by game - allows you to search the IDGB database for a review by game</p>
+      <p>You can select individual reviews to view them on a singular page also</p>
+      <br>
+      <p>List reviews - shows all the reviews</p>
+      <p>Topreviews shows the highest rated games (games with a rating above 8)</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>GoldGameReviews</p>
+    <p>Created by: Noah Tambala (ntamb002)</p>
+    <p>Contact: ntamb002@gold.ac.uk</p>
+  </footer>
+</body>
+
 </html>

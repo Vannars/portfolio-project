@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Review Details</title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<header>
+    <p><a href="../../">Home</a></p>
+    <% if (user) { %>
+        <p>Welcome, <%= user.username %>! <a href="/users/logout">Logout</a></p>
+        <% } else { %>
+            <p><a href="/users/login">Login</a> | <a href="/users/register">Register</a></p>
+            <% } %>
+</header>
+
+<body>
+    <h1 class="reviews-list">
+        <%= review.headline %>
+    </h1>
+    <p class="reviews-list"><strong>
+            <%= review.game_name %>
+        </strong> | <strong>Score:</strong>
+        <%= review.score %> | <strong>Posted on:</strong>
+            <%= new Date(review.created_at).toLocaleDateString() %> | <strong>Posted by:</strong>
+                <%= review.username %>
+    </p>
+    <p>
+        <%= review.review_text %>
+    </p>
+    <p><a href="/reviews//topreviews">Top Games List</a></p>
+    <p><a href="/reviews/list">Back to Reviews List</a></p>
+</body>
+<footer>
+    <p>GoldGameReviews</p>
+    <p>Created by: Noah Tambala (ntamb002)</p>
+    <p>Contact: ntamb002@gold.ac.uk</p>
+  </footer>
+</html>

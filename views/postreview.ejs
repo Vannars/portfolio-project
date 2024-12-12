@@ -1,17 +1,52 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Add book to <%=siteData.siteName%></title>
-    <link rel="stylesheet"  type="text/css" href="/main.css" />
-  </head>
-  <body>
-    <h1><%=siteData.siteName%>: Post a review</h1>
-    <form method="POST" action="reviewposted">
-        <p>Game: <input id="title" type="text" name="title" value="" /></p>
-        <p>Score: <input id="score" type="text" name="score" value="" /></p>
-        <input type="submit" value="reviewposted" />
-      </form>
-      <p><a href="users/logout">Logout</a></p>
-  </body>
-</html>
 
+<head>
+  <title>Post a Review for <%= siteData.siteName %></title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="/"><%= siteData.siteName %></a>
+    </div>
+    <nav>
+      <p><a href="/">Home</a></p>
+      <p><a href="../../users/list">List users</a></p>
+      <% if (user) { %>
+        <p>Logged in as: <%= user.username %> | <a href="/users/logout">Logout</a></p>
+      <% } else { %>
+        <p><a href="/users/login">Login</a> | <a href="/users/register">Register</a></p>
+      <% } %>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Post a Review for <%= siteData.siteName %></h1>
+    <form method="POST" action="/reviews/reviewposted" class="review-form">
+      <input type="hidden" name="gameTitle" value="<%= gameTitle %>" />
+      <input type="hidden" name="gameId" value="<%= gameId %>" />
+      <input type="hidden" name="gameDate" value="<%= gameDate %>" />
+      <p>Game: <input type="text" value="<%= gameTitle %>" disabled /></p>
+      <p>Game ID: <input type="text" value="<%= gameId %>" disabled /></p>
+      <p>Release Date: <input type="text" value="<%= new Date(gameDate * 1000).toLocaleDateString() %>" disabled /></p>
+      <p>Score: <input id="score" type="number" name="score" min="0" max="10" required /></p>
+      <p>Headline: <input id="headline" type="text" name="headline" required /></p>
+      <p>Review: <textarea id="review_text" name="review_text" rows="4" cols="50" required></textarea></p>
+      <input type="submit" value="Submit Review" />
+    </form>
+    <div class="navigation-links">
+      <p><a href="/reviews/search">Back to Search</a></p>
+      <p><a href="/users/logout">Logout</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>GoldGameReviews</p>
+    <p>Created by: Noah Tambala (ntamb002)</p>
+    <p>Contact: ntamb002@gold.ac.uk</p>
+  </footer>
+</body>
+
+</html>

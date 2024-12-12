@@ -2,14 +2,14 @@
 <html>
 
 <head>
-  <title>Reviews List</title>
+  <title>Reviews List by Game</title>
   <link rel="stylesheet" type="text/css" href="/main.css" />
 </head>
 
 <body>
   <header>
     <div class="logo">
-      <a href="/">GoldGameReviews</a>
+      <a href="/"><%= siteData.siteName %></a>
     </div>
     <nav>
       <p><a href="/">Home</a></p>
@@ -22,19 +22,20 @@
   </header>
 
   <main>
-    <h1>Reviews List</h1>
+    <h1>Reviews List by Game</h1>
     <ul class="reviews-list">
       <% reviews_list.forEach(function(review) { %>
         <li class="review-item">
-          <h2><a href="/reviews/review/<%= review.id %>"><%= review.headline %></a></h2>
-          <p><strong><%= review.game_name %></strong> | <strong>Score:</strong> <%= review.score %> | <strong>Posted on:</strong> <%= new Date(review.created_at).toLocaleDateString() %> | <strong>Posted by:</strong> <%= review.username %></p>
-          <p><%= review.review_text %></p>
+          <strong><%= review.game_name %></strong><br>
+          <strong><%= review.headline %></strong><br>
+          <strong>Created At:</strong> <%= new Date(review.created_at).toLocaleDateString() %> <strong>By:</strong> <%= review.username %><br>
+          <strong>Review:</strong> <%= review.review_text %><br>
+          <strong>Score:</strong> <%= review.score %><br>
         </li>
       <% }); %>
     </ul>
     <div class="navigation-links">
-      <p><a href="../reviews/topreviews">Top Games List</a></p>
-      <p><a href="../reviews/search">Back to Search</a></p>
+      <p><a href="/reviews/search_bygame">Back to Reviews by Game</a></p>
     </div>
   </main>
 

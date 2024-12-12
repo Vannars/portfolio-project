@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Search <%= siteData.siteName %></title>
+  <title>Search by Game for <%= siteData.siteName %></title>
   <link rel="stylesheet" type="text/css" href="/main.css" />
 </head>
 
@@ -23,8 +23,8 @@
 
   <main>
     <h1>Search <%= siteData.siteName %></h1>
-    <form action="/reviews/search_result" method="POST" class="search-form">
-      <p>Search for a game to review</p>
+    <form action="search_bygame_result" method="GET" class="search-form">
+      <p>Search for a review by game</p>
       <input id="search_box" type="text" name="search_text" required />
       <input type="submit" value="Search" />
     </form>

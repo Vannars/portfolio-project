@@ -1,0 +1,137 @@
+/* This imports the Jura font from Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Jura&display=swap');
+
+/* Set: margin and padding to 0 as default -  sets the default font family to Jura */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Jura', Arial, sans-serif;
+}
+
+/* header*/
+header {
+    display: flex;
+    left: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    background-color: #2E3B4E;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    padding: 0 20px;
+}
+
+/* nav inside header */
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+/* a elements in header */
+header a {
+    text-decoration: none;
+    margin-right: 20px;
+    padding: 5px;
+    letter-spacing: 1px;
+    font-size: 20px;
+    color: #F0F0F0; 
+}
+/*Some over styings - made yello for contrast for eyesight reasons */
+header a:hover {
+    color: #FFD700; /* Yellow n hover for dyslexia */
+}
+
+.logo a:hover {
+    color: #FFD700; /* Yellow tex on hover for  dyslexia */
+}
+
+
+/* "logo" header */
+.logo a {
+    font-size: 30px;
+    text-decoration: none;
+    color: #F0F0F0;
+}
+
+
+/* body*/
+body {
+    overflow-x: hidden;
+    padding-top:120px; /* Add padding to avoid content being hidden behind the fixed header */
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    background-color: #F5F5F5;
+   
+    
+}
+
+/* main */
+main {
+    padding: 20px;
+}
+
+/* h1 */
+h1 {
+    margin-bottom:20px;
+    text-align:center;
+    color: #2E3B4E;
+}
+
+/* reviews list */
+.reviews-list {
+    list-style-type:none;
+    padding:0;
+}
+
+.review-item {
+    background-color: #FFFFFF;
+    padding:20px;
+    border:1px solid #DDD;
+    border-radius:5px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0.5, 0.5);
+}
+
+.review-item strong{
+    display: block;
+    margin-bottom: 5px;
+    color: #333;}
+
+/* navigation links */
+.navigation-links {
+    text-align:center;
+    margin-top:15px;
+}
+
+.navigation-links p {
+    margin-bottom:15px;
+}
+
+/* Footer*/
+footer {
+    position:fixed;
+    text-align:center;
+    height:30px;
+    width:100%;
+    background:#2E3B4E; /* Darker background color for better contrast */
+    color:#F0F0F0; /* Light text color for better contrast */
+    padding:30px 0;
+    bottom: 0;
+    left: 0;
+}
+/* this doesnt work :(((( */
+@media (max-width:320px) {
+    body {
+        min-width:320px;
+    }
+}
+
+@media (max-height:500px) {
+    body {
+        min-height:500px;
+    }
+}

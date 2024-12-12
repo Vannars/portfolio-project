@@ -1,17 +1,47 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Welcome to <%=siteData.siteName%></title>
-    <link rel="stylesheet"  type="text/css" href="/main.css" />
-  </head>
-  <body>
-    <h1><%=siteData.siteName%> site</h1>
-    <h2>Highest reviewed games:</h2>
-    <ul>
-        <% reviews_list.forEach(function(review) { %>
-            <li><% =review.title %>, <%= review.game_id %>, <%=review.score %>, <%=review.user_id %> </li>
-        <% }) %>
+
+<head>
+  <title>Top Games List for <%= siteData.siteName %></title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="/"><%= siteData.siteName %></a>
+    </div>
+    <nav>
+      <p><a href="/">Home</a></p>
+      <% if (user) { %>
+        <p>Logged in as: <%= user.username %> | <a href="/users/logout">Logout</a></p>
+      <% } else { %>
+        <p><a href="/users/login">Login</a> | <a href="/users/register">Register</a></p>
+      <% } %>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Top Games List</h1>
+    <ul class="reviews-list">
+      <% reviews_list.forEach(function(review) { %>
+        <li class="review-item">
+          <h2><a href="/reviews/review/<%= review.id %>"><%= review.headline %></a></h2>
+          <p><strong><%= review.game_name %></strong> | <strong>Score:</strong> <%= review.score %> | <strong>Posted on:</strong> <%= new Date(review.created_at).toLocaleDateString() %> | <strong>Posted by:</strong> <%= review.username %></p>
+          <p><%= review.review_text %></p>
+        </li>
+      <% }); %>
     </ul>
-    <p><a href="users/logout">Logout</a></p>
-    </body>
+    <div class="navigation-links">
+      <p><a href="/reviews/list">Back to reviews list</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>GoldGameReviews</p>
+    <p>Created by: Noah Tambala (ntamb002)</p>
+    <p>Contact: ntamb002@gold.ac.uk</p>
+  </footer>
+</body>
+
 </html>

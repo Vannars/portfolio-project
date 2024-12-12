@@ -1,17 +1,43 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Welcome to <%=siteData.siteName%></title>
-    <link rel="stylesheet"  type="text/css" href="/main.css" />
-  </head>
-  <body>
-    <h1><%=siteData.siteName%> site</h1>
+
+<head>
+  <title>Welcome to <%= siteData.siteName %></title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="/"><%= siteData.siteName %></a>
+    </div>
+    <nav>
+      <p><a href="/">Home</a></p>
+      <% if (user) { %>
+        <p>Logged in as: <%= user.username %> | <a href="/users/logout">Logout</a></p>
+      <% } else { %>
+        <p><a href="/users/login">Login</a> | <a href="/users/register">Register</a></p>
+      <% } %>
+    </nav>
+  </header>
+
+  <main>
+    <h1><%= siteData.siteName %> site</h1>
     <h2>Here are the list of users</h2>
-    <ul>
+    <ul class="user-list">
       <% availableUsers.forEach(function(user) { %>
-        <li><%= user.username %></li>
+        <li class="user-item">
+          <%= user.username %>
+        </li>
       <% }) %>
     </ul>
-    <p><a href="users/logout">Logout</a></p>
-    </body>
+  </main>
+
+  <footer>
+    <p>GoldGameReviews</p>
+    <p>Created by: Noah Tambala (ntamb002)</p>
+    <p>Contact: ntamb002@gold.ac.uk</p>
+  </footer>
+</body>
+
 </html>

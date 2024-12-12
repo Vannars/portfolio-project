@@ -1,19 +1,35 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Welcome to <%=siteData.siteName%></title>
-    <link rel="stylesheet"  type="text/css" href="/main.css" />
-  </head>
-  <body>
-    <h1>Welcome to <%=siteData.siteName%></h1>
-    <p><a href="about">About <%=siteData.siteName%></a></p>
-    <p><a href="reviews/search">Search for reviews</a></p>
-    <p><a href="reviews/postreview">Add a new review</a></p>
-    <p><a href="reviews/listreviews">List reviews</a></p>
-    <p><a href="reviews/topreviews">Highest rated games</a></p>
-    <p><a href="users/register">Register with us</a></p>
-    <p><a href="users/list">List users</a></p>
-    <p><a href="users/login">Login</a></p>
-    <p><a href="users/logout">Logout</a></p>
-  </body>
+
+<head>
+  <title>Welcome to <%=siteData.siteName%>
+  </title>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<header>
+  <p><a href="/">Home</a></p>
+<p><a href="users/list">List users</a></p>
+  <% if (user) { %>
+    <p>Logged in as: <%= user.username %> | <a href="/users/logout">Logout</a></p>
+    <% } else { %>
+      <p><a href="/users/login">Login</a> | <a href="/users/register">Register</a></p>
+      <% } %>
+</header>
+<body>
+  <h1>Welcome to <%=siteData.siteName%>
+  </h1>
+  <p><a href="about">About - <%=siteData.siteName%></a></p>
+  <br>
+  <p><a href="reviews/search">Search - for a game to review</a></p>
+  <br>
+  <p><a href="reviews/search_bygame">Search - for a review</a></p>
+  <p><a href="reviews/topreviews">Highest rated games</a></p>
+  <p><a href="reviews/list">List reviews</a></p>
+  
+</body>
+<footer>
+  <p>GoldGameReviews</p>
+  <p>Created by: Noah Tambala (ntamb002)</p>
+  <p>Contact: ntamb002@gold.ac.uk</p>
+</footer>
 </html>
