@@ -11,7 +11,7 @@ npm install ejs
 npm install bcrypt
 npm install dotenv
 npm install express
-npm install xpress-session
+npm install express-session
 npm install express-sanitizer
 npm install express-validator
 npm install curl
