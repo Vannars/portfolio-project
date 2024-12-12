@@ -7,7 +7,7 @@ STEP 1: On your local environment go to the terminal and npm install :
 
 npm install node.js
 npm install mysql2
-npm install js
+npm install ejs
 npm install bcrypt
 npm install dotenv
 npm install express
@@ -72,7 +72,7 @@ ACCESS_TOKEN=hgr9d70kdfsg0vcfv0giwush5xr49l
 ===================MY PROVIDED API API.JS===================================================
 The following commands can be used when running on a localhost:
 
-For accessing all the REVIEWS data - 
+node.For accessing all the REVIEWS data - 
 curl.exe -X GET http://localhost:8000/api/reviews
 
 For accessing review data by id (the number at the end) -
