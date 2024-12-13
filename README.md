@@ -24,7 +24,7 @@ source create_db.sql
 source insert_into_db.sql
 
 
-If you don't have msql workbench use:
+If you don't have msql workbench in the terminal in the project directory use:
 cd db_models
 sudo mysql
 source create_db.sql
